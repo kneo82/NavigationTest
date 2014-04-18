@@ -303,7 +303,7 @@
 			children = (
 				551FE160190121E30018F5F5 /* NVAppDelegate.h */,
 				551FE161190121E30018F5F5 /* NVAppDelegate.m */,
-				551FE1A51901258B0018F5F5 /* IDAPKit */,
+				551FE1A51901258B0018F5F5 /* IDPKit */,
 				551FE181190122D70018F5F5 /* Controller */,
 				551FE180190122A50018F5F5 /* Category */,
 				551FE163190121E30018F5F5 /* Images.xcassets */,
@@ -396,13 +396,13 @@
 			path = MapViewController;
 			sourceTree = "<group>";
 		};
-		551FE1A51901258B0018F5F5 /* IDAPKit */ = {
+		551FE1A51901258B0018F5F5 /* IDPKit */ = {
 			isa = PBXGroup;
 			children = (
 				551FE1A61901258B0018F5F5 /* src */,
 				551FE1A81901258B0018F5F5 /* submodules */,
 			);
-			path = IDAPKit;
+			path = IDPKit;
 			sourceTree = "<group>";
 		};
 		551FE1A61901258B0018F5F5 /* src */ = {
@@ -803,7 +803,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = NV;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Vitaliy Voronok";
 				TargetAttributes = {
 					551FE168190121E30018F5F5 = {
@@ -963,7 +963,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1002,7 +1001,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1060,7 +1058,6 @@
 		551FE17E190121E30018F5F5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Navigation.app/Navigation";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1083,7 +1080,6 @@
 		551FE17F190121E30018F5F5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Navigation.app/Navigation";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1118,6 +1114,7 @@
 				551FE17C190121E30018F5F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		551FE17D190121E30018F5F5 /* Build configuration list for PBXNativeTarget "NavigationTests" */ = {
 			isa = XCConfigurationList;
@@ -1126,6 +1123,7 @@
 				551FE17F190121E30018F5F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
