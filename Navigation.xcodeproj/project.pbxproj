@@ -19,6 +19,16 @@
 		551FE16D190121E30018F5F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551FE155190121E30018F5F5 /* UIKit.framework */; };
 		551FE175190121E30018F5F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 551FE173190121E30018F5F5 /* InfoPlist.strings */; };
 		551FE177190121E30018F5F5 /* NavigationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE176190121E30018F5F5 /* NavigationTests.m */; };
+		551FE187190123840018F5F5 /* UIWindow+TDExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE186190123840018F5F5 /* UIWindow+TDExtensions.m */; };
+		551FE190190124160018F5F5 /* NVCompassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE18E190124160018F5F5 /* NVCompassViewController.m */; };
+		551FE191190124160018F5F5 /* NVCompassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551FE18F190124160018F5F5 /* NVCompassViewController.xib */; };
+		551FE1941901242A0018F5F5 /* NVCompassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE1931901242A0018F5F5 /* NVCompassView.m */; };
+		551FE198190124480018F5F5 /* NVLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE196190124480018F5F5 /* NVLocationViewController.m */; };
+		551FE199190124480018F5F5 /* NVLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551FE197190124480018F5F5 /* NVLocationViewController.xib */; };
+		551FE19C1901245A0018F5F5 /* NVLocationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE19B1901245A0018F5F5 /* NVLocationView.m */; };
+		551FE1A0190124700018F5F5 /* NVMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE19E190124700018F5F5 /* NVMapViewController.m */; };
+		551FE1A1190124700018F5F5 /* NVMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 551FE19F190124700018F5F5 /* NVMapViewController.xib */; };
+		551FE1A4190124840018F5F5 /* NVMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE1A3190124840018F5F5 /* NVMapView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +58,23 @@
 		551FE172190121E30018F5F5 /* NavigationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NavigationTests-Info.plist"; sourceTree = "<group>"; };
 		551FE174190121E30018F5F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		551FE176190121E30018F5F5 /* NavigationTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationTests.m; sourceTree = "<group>"; };
+		551FE185190123840018F5F5 /* UIWindow+TDExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+TDExtensions.h"; sourceTree = "<group>"; };
+		551FE186190123840018F5F5 /* UIWindow+TDExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+TDExtensions.m"; sourceTree = "<group>"; };
+		551FE18D190124160018F5F5 /* NVCompassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVCompassViewController.h; sourceTree = "<group>"; };
+		551FE18E190124160018F5F5 /* NVCompassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVCompassViewController.m; sourceTree = "<group>"; };
+		551FE18F190124160018F5F5 /* NVCompassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NVCompassViewController.xib; sourceTree = "<group>"; };
+		551FE1921901242A0018F5F5 /* NVCompassView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVCompassView.h; sourceTree = "<group>"; };
+		551FE1931901242A0018F5F5 /* NVCompassView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVCompassView.m; sourceTree = "<group>"; };
+		551FE195190124480018F5F5 /* NVLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVLocationViewController.h; sourceTree = "<group>"; };
+		551FE196190124480018F5F5 /* NVLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVLocationViewController.m; sourceTree = "<group>"; };
+		551FE197190124480018F5F5 /* NVLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NVLocationViewController.xib; sourceTree = "<group>"; };
+		551FE19A1901245A0018F5F5 /* NVLocationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVLocationView.h; sourceTree = "<group>"; };
+		551FE19B1901245A0018F5F5 /* NVLocationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVLocationView.m; sourceTree = "<group>"; };
+		551FE19D190124700018F5F5 /* NVMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVMapViewController.h; sourceTree = "<group>"; };
+		551FE19E190124700018F5F5 /* NVMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVMapViewController.m; sourceTree = "<group>"; };
+		551FE19F190124700018F5F5 /* NVMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NVMapViewController.xib; sourceTree = "<group>"; };
+		551FE1A2190124840018F5F5 /* NVMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVMapView.h; sourceTree = "<group>"; };
+		551FE1A3190124840018F5F5 /* NVMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVMapView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +134,8 @@
 		551FE157190121E30018F5F5 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				551FE181190122D70018F5F5 /* Controller */,
+				551FE180190122A50018F5F5 /* Category */,
 				551FE160190121E30018F5F5 /* NVAppDelegate.h */,
 				551FE161190121E30018F5F5 /* NVAppDelegate.m */,
 				551FE163190121E30018F5F5 /* Images.xcassets */,
@@ -142,6 +171,61 @@
 				551FE173190121E30018F5F5 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		551FE180190122A50018F5F5 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				551FE185190123840018F5F5 /* UIWindow+TDExtensions.h */,
+				551FE186190123840018F5F5 /* UIWindow+TDExtensions.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		551FE181190122D70018F5F5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				551FE1841901230C0018F5F5 /* MapViewController */,
+				551FE183190122FF0018F5F5 /* LocationViewController */,
+				551FE182190122EB0018F5F5 /* CompassViewController */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		551FE182190122EB0018F5F5 /* CompassViewController */ = {
+			isa = PBXGroup;
+			children = (
+				551FE18D190124160018F5F5 /* NVCompassViewController.h */,
+				551FE18E190124160018F5F5 /* NVCompassViewController.m */,
+				551FE18F190124160018F5F5 /* NVCompassViewController.xib */,
+				551FE1921901242A0018F5F5 /* NVCompassView.h */,
+				551FE1931901242A0018F5F5 /* NVCompassView.m */,
+			);
+			path = CompassViewController;
+			sourceTree = "<group>";
+		};
+		551FE183190122FF0018F5F5 /* LocationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				551FE195190124480018F5F5 /* NVLocationViewController.h */,
+				551FE196190124480018F5F5 /* NVLocationViewController.m */,
+				551FE197190124480018F5F5 /* NVLocationViewController.xib */,
+				551FE19A1901245A0018F5F5 /* NVLocationView.h */,
+				551FE19B1901245A0018F5F5 /* NVLocationView.m */,
+			);
+			path = LocationViewController;
+			sourceTree = "<group>";
+		};
+		551FE1841901230C0018F5F5 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				551FE19D190124700018F5F5 /* NVMapViewController.h */,
+				551FE19E190124700018F5F5 /* NVMapViewController.m */,
+				551FE19F190124700018F5F5 /* NVMapViewController.xib */,
+				551FE1A2190124840018F5F5 /* NVMapView.h */,
+				551FE1A3190124840018F5F5 /* NVMapView.m */,
+			);
+			path = MapViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,7 +305,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				551FE15C190121E30018F5F5 /* InfoPlist.strings in Resources */,
+				551FE1A1190124700018F5F5 /* NVMapViewController.xib in Resources */,
+				551FE199190124480018F5F5 /* NVLocationViewController.xib in Resources */,
 				551FE164190121E30018F5F5 /* Images.xcassets in Resources */,
+				551FE191190124160018F5F5 /* NVCompassViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,8 +327,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551FE1941901242A0018F5F5 /* NVCompassView.m in Sources */,
+				551FE1A0190124700018F5F5 /* NVMapViewController.m in Sources */,
+				551FE1A4190124840018F5F5 /* NVMapView.m in Sources */,
+				551FE19C1901245A0018F5F5 /* NVLocationView.m in Sources */,
 				551FE162190121E30018F5F5 /* NVAppDelegate.m in Sources */,
+				551FE190190124160018F5F5 /* NVCompassViewController.m in Sources */,
 				551FE15E190121E30018F5F5 /* main.m in Sources */,
+				551FE187190123840018F5F5 /* UIWindow+TDExtensions.m in Sources */,
+				551FE198190124480018F5F5 /* NVLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +385,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -330,7 +424,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
