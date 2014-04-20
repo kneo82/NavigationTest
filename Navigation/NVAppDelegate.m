@@ -36,18 +36,25 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     
     NVMapViewController *mapController = nil;
     mapController = [NVMapViewController viewControllerWithDefaultNib];
+//    mapController.title = @"Map";
     
     NVLocationViewController *locationController = nil;
     locationController = [NVLocationViewController viewControllerWithDefaultNib];
+//    locationController.title = @"Location";
     
     NVCompassViewController *compassController = nil;
     compassController = [NVCompassViewController viewControllerWithDefaultNib];
+//    compassController.title = @"Compass";
     
     UITabBarController *tabBar = [UITabBarController object];
-    [tabBar addChildViewController:mapController];
-    [tabBar addChildViewController:locationController];
-    [tabBar addChildViewController:compassController];
+    NSArray *controllers = [NSArray arrayWithObjects:mapController,
+                                                    locationController,
+                                                    compassController,
+                                                    nil];
     
+
+    tabBar.viewControllers = controllers;
+
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = tabBar;

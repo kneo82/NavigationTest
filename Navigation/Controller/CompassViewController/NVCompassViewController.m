@@ -8,6 +8,8 @@
 
 #import "NVCompassViewController.h"
 
+static NSString * const kTitle = @"Compass";
+
 @interface NVCompassViewController ()
 
 @end
@@ -19,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = kTitle;
     }
     return self;
 }

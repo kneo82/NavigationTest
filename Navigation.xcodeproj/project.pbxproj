@@ -81,6 +81,10 @@
 		551FE2681901258C0018F5F5 /* UIView+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE2321901258C0018F5F5 /* UIView+IDPExtensions.m */; };
 		551FE2691901258C0018F5F5 /* UIViewController+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE2341901258C0018F5F5 /* UIViewController+IDPExtensions.m */; };
 		551FE26A1901258C0018F5F5 /* UIViewController+IDPInitialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE2361901258C0018F5F5 /* UIViewController+IDPInitialization.m */; };
+		5576AC8119027EAD001EE5FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5576AC8019027EAD001EE5FC /* CoreLocation.framework */; };
+		5576AC83190283DE001EE5FC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5576AC82190283DE001EE5FC /* MapKit.framework */; };
+		5576AC861902E8F3001EE5FC /* NVMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576AC851902E8F3001EE5FC /* NVMapAnnotation.m */; };
+		5576AC8C1902F399001EE5FC /* MKMapView+NVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576AC8B1902F399001EE5FC /* MKMapView+NVExtensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,6 +246,12 @@
 		551FE2341901258C0018F5F5 /* UIViewController+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IDPExtensions.m"; sourceTree = "<group>"; };
 		551FE2351901258C0018F5F5 /* UIViewController+IDPInitialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IDPInitialization.h"; sourceTree = "<group>"; };
 		551FE2361901258C0018F5F5 /* UIViewController+IDPInitialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IDPInitialization.m"; sourceTree = "<group>"; };
+		5576AC8019027EAD001EE5FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5576AC82190283DE001EE5FC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		5576AC841902E8F3001EE5FC /* NVMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVMapAnnotation.h; sourceTree = "<group>"; };
+		5576AC851902E8F3001EE5FC /* NVMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVMapAnnotation.m; sourceTree = "<group>"; };
+		5576AC8A1902F399001EE5FC /* MKMapView+NVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+NVExtensions.h"; sourceTree = "<group>"; };
+		5576AC8B1902F399001EE5FC /* MKMapView+NVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+NVExtensions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -249,6 +259,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5576AC83190283DE001EE5FC /* MapKit.framework in Frameworks */,
+				5576AC8119027EAD001EE5FC /* CoreLocation.framework in Frameworks */,
 				551FE154190121E30018F5F5 /* CoreGraphics.framework in Frameworks */,
 				551FE156190121E30018F5F5 /* UIKit.framework in Frameworks */,
 				551FE152190121E30018F5F5 /* Foundation.framework in Frameworks */,
@@ -290,6 +302,8 @@
 		551FE150190121E30018F5F5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5576AC82190283DE001EE5FC /* MapKit.framework */,
+				5576AC8019027EAD001EE5FC /* CoreLocation.framework */,
 				551FE151190121E30018F5F5 /* Foundation.framework */,
 				551FE153190121E30018F5F5 /* CoreGraphics.framework */,
 				551FE155190121E30018F5F5 /* UIKit.framework */,
@@ -346,6 +360,8 @@
 			children = (
 				551FE185190123840018F5F5 /* UIWindow+TDExtensions.h */,
 				551FE186190123840018F5F5 /* UIWindow+TDExtensions.m */,
+				5576AC8A1902F399001EE5FC /* MKMapView+NVExtensions.h */,
+				5576AC8B1902F399001EE5FC /* MKMapView+NVExtensions.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -392,6 +408,8 @@
 				551FE19F190124700018F5F5 /* NVMapViewController.xib */,
 				551FE1A2190124840018F5F5 /* NVMapView.h */,
 				551FE1A3190124840018F5F5 /* NVMapView.m */,
+				5576AC841902E8F3001EE5FC /* NVMapAnnotation.h */,
+				5576AC851902E8F3001EE5FC /* NVMapAnnotation.m */,
 			);
 			path = MapViewController;
 			sourceTree = "<group>";
@@ -884,6 +902,7 @@
 				551FE190190124160018F5F5 /* NVCompassViewController.m in Sources */,
 				551FE2521901258C0018F5F5 /* NSObject+IDPOCExtensions.m in Sources */,
 				551FE26A1901258C0018F5F5 /* UIViewController+IDPInitialization.m in Sources */,
+				5576AC861902E8F3001EE5FC /* NVMapAnnotation.m in Sources */,
 				551FE2431901258C0018F5F5 /* NSString+IDPExtensions.m in Sources */,
 				551FE25A1901258C0018F5F5 /* IDPURLConnection.m in Sources */,
 				551FE2591901258C0018F5F5 /* IDPStackArray.m in Sources */,
@@ -900,6 +919,7 @@
 				551FE2481901258C0018F5F5 /* IDPKVOMutableArray.m in Sources */,
 				551FE2471901258C0018F5F5 /* IDPKVOContext.m in Sources */,
 				551FE2561901258C0018F5F5 /* IDPRetainingReference.m in Sources */,
+				5576AC8C1902F399001EE5FC /* MKMapView+NVExtensions.m in Sources */,
 				551FE24F1901258C0018F5F5 /* IDPOCContext.m in Sources */,
 				551FE2511901258C0018F5F5 /* IDPOCStack.m in Sources */,
 				551FE2501901258C0018F5F5 /* IDPOCImplementation.m in Sources */,

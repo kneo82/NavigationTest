@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface NVMapView : UIView
+@property (nonatomic, retain) IBOutlet MKMapView *map;
 
 @end

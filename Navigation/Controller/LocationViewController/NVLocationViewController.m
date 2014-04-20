@@ -8,6 +8,8 @@
 
 #import "NVLocationViewController.h"
 
+static NSString * const kTitle = @"Location";
+
 @interface NVLocationViewController ()
 
 @end
@@ -19,6 +21,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = kTitle;
     }
     return self;
 }
