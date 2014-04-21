@@ -16,11 +16,10 @@
 static NSString * const kTitle = @"Map";
 
 
-#define kDistanceArray [NSArray arrayWithObjects:@2, @500, @1000, @2000, nil]
+#define kDistanceArray [NSArray arrayWithObjects:@100, @500, @1000, @2000, nil]
 
 @interface NVMapViewController ()
 @property (nonatomic, readonly) NVMapView *mapView;
-
 
 @end
 
@@ -35,8 +34,6 @@ static NSString * const kTitle = @"Map";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-//        self.mapView.map.delegate = self;
         self.title = kTitle;
     }
     return self;
@@ -64,59 +61,17 @@ IDPViewControllerViewOfClassGetterSynthesize(NVMapView, mapView)
     region.span = span;
     
     [self.mapView.map setRegion:region animated:YES];
-//    [self.mapView.map setCenterCoordinate:coord animated:YES];
-    
-//    NVMapAnnotation *placemark = [[NVMapAnnotation alloc] initWithCoordinate:coord];
-//    placemark.title = @"Кремль";
-//    placemark.subtitle = @"Россия, Москва";
-//    [self.mapView.map addAnnotation:placemark];
-//    [placemark release];
-////    MKCoordinateRegion reg =  MKCoordinateRegionMakeWithDistance(coord, 500, 0);
-////    CLLocation *west = [[CLLocation alloc] init
-//    // [self.mapView.map convertPoint:point toCoordinateFromView:nil];
-//    
-//    CLLocationCoordinate2D coord2 = [self coordinateForDistance:2 fromCoordinate:coord];
-//    
-//    NVMapAnnotation *placemark2 = [[NVMapAnnotation alloc] initWithCoordinate:coord2];
-//    placemark2.title = @"2 m";
-//    placemark2.subtitle = @"Россия, Москва";
-//    [self.mapView.map addAnnotation:placemark2];
-//    [placemark2 release];
-//    
-//    CLLocationCoordinate2D coord4 = [self coordinateForDistance:2 fromCoordinate:coord];
-//    NSLog(@"Coord %f -- %f", coord4.latitude, coord4.longitude);
-//    NVMapAnnotation *placemark4 = [[NVMapAnnotation alloc] initWithCoordinate:coord4];
-//    placemark4.title = @"1000 m";
-//    placemark4.subtitle = @"Россия, Москва";
-//    [self.mapView.map addAnnotation:placemark4];
-//    [placemark4 release];
-//    
-//    CLLocationCoordinate2D coord5 = [self coordinateForDistance:2000 fromCoordinate:coord];
-//    
-//    NVMapAnnotation *placemark5 = [[NVMapAnnotation alloc] initWithCoordinate:coord5];
-//    placemark5.title = @"2000 m";
-//    placemark5.subtitle = @"Россия, Москва";
-//    [self.mapView.map addAnnotation:placemark5];
-//    [placemark5 release];
-
-    // Do any additional setup after loading the view from its nib.
 }
-///////////////////////
+
 - (CLLocationCoordinate2D)coordinateForDistance:(CLLocationDistance)distance
                                  fromCoordinate:(CLLocationCoordinate2D)coordinate
 {
     MKMapPoint point = MKMapPointForCoordinate(coordinate);
-    CLLocationDistance metersPerPoint = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
-    NSLog(@"P : %f --", metersPerPoint);
-    double latPoints = distance * metersPerPoint;
+    CLLocationDistance pointsPerMeter = MKMapPointsPerMeterAtLatitude(coordinate.latitude);
+
+    double latPoints = distance * pointsPerMeter;
     point.x -= latPoints;
     return MKCoordinateForMapPoint(point);
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark -
@@ -134,10 +89,9 @@ IDPViewControllerViewOfClassGetterSynthesize(NVMapView, mapView)
     
     for (NSNumber *distance  in array) {
         CLLocationCoordinate2D coordinate = [self coordinateForDistance:distance.intValue fromCoordinate:userCoordinate];
-        NVMapAnnotation *placemark = [[NVMapAnnotation alloc] initWithCoordinate:coordinate];
+        NVMapAnnotation *placemark = [[[NVMapAnnotation alloc] initWithCoordinate:coordinate] autorelease];
         placemark.title = [NSString stringWithFormat:@"Distance %@ m", distance];
         [self.mapView.map addAnnotation:placemark];
-        [placemark release];
     }
 }
 
@@ -167,7 +121,7 @@ IDPViewControllerViewOfClassGetterSynthesize(NVMapView, mapView)
 
         customPinView.pinColor = MKPinAnnotationColorGreen;
         return customPinView;
-    } else     {
+    } else {
         pinView.annotation = annotation;
     }
     

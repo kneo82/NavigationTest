@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NVLocationView : UIView
+@property (nonatomic, retain)   IBOutlet UILabel    *coordinate;
+@property (nonatomic, retain)   IBOutlet UILabel    *address;
 
 @end

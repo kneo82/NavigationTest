@@ -10,6 +10,16 @@
 
 @implementation NVLocationView
 
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
+- (void)dealloc {
+    self.coordinate = nil;
+    self.address = nil;
+    
+    [super dealloc];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
