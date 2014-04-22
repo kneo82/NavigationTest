@@ -7,6 +7,15 @@
 //
 
 #import "NVLocationView.h"
+#import "IDPPropertyMacros.h"
+
+static NSString * const kAddressKey = @"FormattedAddressLines";
+
+@interface NVLocationView ()
+
+- (void)fillPlacemark;
+
+@end
 
 @implementation NVLocationView
 
@@ -16,26 +25,29 @@
 - (void)dealloc {
     self.coordinate = nil;
     self.address = nil;
+    self.placemark = nil;
     
     [super dealloc];
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
+#pragma mark -
+#pragma mark Accessors
+
+- (void)setPlacemark:(CLPlacemark *)placemark {
+    IDPNonatomicRetainPropertySynthesize(_placemark, placemark);
+    [self fillPlacemark];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+#pragma mark -
+#pragma mark Private
+
+- (void)fillPlacemark {
+    NSArray *addressLine = self.placemark.addressDictionary[kAddressKey];
+    NSMutableString *formattedAddress = [NSMutableString string];
+    for (NSString *item in addressLine) {
+        [formattedAddress appendFormat:@"%@\n", item];
+    }
+    self.address.text = formattedAddress;
 }
-*/
 
 @end

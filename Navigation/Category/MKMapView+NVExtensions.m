@@ -11,10 +11,6 @@
 @implementation MKMapView (NVExtensions)
 
 - (id)dequeuePin:(Class)theClass {
-    return [self dequeuePin:theClass withOwner:nil];
-}
-
-- (id)dequeuePin:(Class)theClass withOwner:(id)owner {
     MKAnnotationView *annotation = nil;
     annotation = [self dequeueReusableAnnotationViewWithIdentifier:NSStringFromClass(theClass)];
     

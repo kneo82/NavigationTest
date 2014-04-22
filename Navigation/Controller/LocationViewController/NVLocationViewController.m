@@ -15,10 +15,12 @@
 #import "NSObject+IDPExtensions.h"
 
 static NSString * const kTitle = @"Location";
+static const CLLocationDistance kDistanceForFilter = 100;
 
 @interface NVLocationViewController ()
 @property (nonatomic, readonly) NVLocationView      *locationView;
 @property (nonatomic, retain)   CLLocationManager   *locationManager;
+
 @end
 
 @implementation NVLocationViewController
@@ -34,17 +36,22 @@ static NSString * const kTitle = @"Location";
     [super dealloc];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
-        // Custom initialization
         self.title = kTitle;
+
         self.locationManager = [CLLocationManager object];
-        [self.locationManager setDelegate:self];
-        [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-        [self.locationManager startUpdatingLocation];
+        CLLocationManager *locationManager = self.locationManager;
+        
+        [locationManager setDelegate:self];
+        [locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        locationManager.distanceFilter = kDistanceForFilter;
+        
+        [locationManager startUpdatingLocation];
     }
+    
     return self;
 }
 
@@ -53,30 +60,27 @@ static NSString * const kTitle = @"Location";
 
 IDPViewControllerViewOfClassGetterSynthesize(NVLocationView, locationView)
 
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
-    // Do any additional setup after loading the view from its nib.
-}
-
 #pragma mark -
 #pragma mark CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *location = [locations lastObject];
-    NSString *coordinat = [NSString stringWithFormat:@"%f - %f", location.coordinate.latitude, location.coordinate.longitude];
+    CLLocationCoordinate2D coordinate = location.coordinate;
     
-    self.locationView.coordinate.text = coordinat;
-    
+    NVLocationView *locationView = self.locationView;
     CLGeocoder *coder = [CLGeocoder object];
-    [coder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+    
+    locationView.coordinate.text = [NSString stringWithFormat:@"%f - %f",
+                                                                coordinate.latitude,
+                                                                coordinate.longitude];
+    
+    [coder reverseGeocodeLocation:location
+                completionHandler:^(NSArray *placemarks, NSError *error)
+    {
         if (!error) {
-            CLPlacemark *pl = [placemarks firstObject];
-            NSLog(@"%@", pl.addressDictionary);
-            self.locationView.address.text = [NSString stringWithFormat:@"%@", pl];
+            locationView.placemark = [placemarks firstObject];
         } else {
-            self.locationView.address.text = [NSString stringWithFormat:@"ERROR : %@", error];
+            locationView.address.text = [NSString stringWithFormat:@"ERROR : %@", error];
         }
     }];
 }
@@ -84,7 +88,8 @@ IDPViewControllerViewOfClassGetterSynthesize(NVLocationView, locationView)
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error
 {
-    self.locationView.coordinate.text = [NSString stringWithFormat:@"Could not find location: %@", error];
+    NSString *errorString = [NSString stringWithFormat:@"Could not find location: %@", error];
+    self.locationView.coordinate.text = errorString;
 }
 
 @end

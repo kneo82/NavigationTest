@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551F7B6719064B32002E877A /* NVPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551F7B6619064B32002E877A /* NVPinView.m */; };
 		551FE152190121E30018F5F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551FE151190121E30018F5F5 /* Foundation.framework */; };
 		551FE154190121E30018F5F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551FE153190121E30018F5F5 /* CoreGraphics.framework */; };
 		551FE156190121E30018F5F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551FE155190121E30018F5F5 /* UIKit.framework */; };
@@ -98,6 +99,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		551F7B6519064B32002E877A /* NVPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVPinView.h; sourceTree = "<group>"; };
+		551F7B6619064B32002E877A /* NVPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVPinView.m; sourceTree = "<group>"; };
 		551FE14E190121E30018F5F5 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		551FE151190121E30018F5F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		551FE153190121E30018F5F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -410,6 +413,8 @@
 				551FE1A3190124840018F5F5 /* NVMapView.m */,
 				5576AC841902E8F3001EE5FC /* NVMapAnnotation.h */,
 				5576AC851902E8F3001EE5FC /* NVMapAnnotation.m */,
+				551F7B6519064B32002E877A /* NVPinView.h */,
+				551F7B6619064B32002E877A /* NVPinView.m */,
 			);
 			path = MapViewController;
 			sourceTree = "<group>";
@@ -887,6 +892,7 @@
 				551FE2531901258C0018F5F5 /* NSObject+IDPOCExtensionsPrivate.m in Sources */,
 				551FE2541901258C0018F5F5 /* IDPObservableObject.m in Sources */,
 				551FE25F1901258C0018F5F5 /* IDPLoadingView.m in Sources */,
+				551F7B6719064B32002E877A /* NVPinView.m in Sources */,
 				551FE2581901258C0018F5F5 /* IDPRetainingDictionary.m in Sources */,
 				551FE2571901258C0018F5F5 /* IDPWeakReference.m in Sources */,
 				551FE2381901258C0018F5F5 /* NSManagedObject+IDPExtensions.m in Sources */,

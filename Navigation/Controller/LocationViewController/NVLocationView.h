@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface NVLocationView : UIView
 @property (nonatomic, retain)   IBOutlet UILabel    *coordinate;
 @property (nonatomic, retain)   IBOutlet UILabel    *address;
+@property (nonatomic, retain)   CLPlacemark         *placemark;
 
 @end

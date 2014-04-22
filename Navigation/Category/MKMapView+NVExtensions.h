@@ -11,6 +11,5 @@
 @interface MKMapView (NVExtensions)
 
 - (id)dequeuePin:(Class)theClass;
-- (id)dequeuePin:(Class)theClass withOwner:(id)owner;
 
 @end
