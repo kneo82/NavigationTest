@@ -16,7 +16,14 @@
 #import "UIViewController+IDPInitialization.h"
 #import "NSObject+IDPExtensions.h"
 
+@interface NVAppDelegate ()
+
+- (UITabBarController *)setupTabBarController;
+
+@end
+
 @implementation NVAppDelegate
+
 #pragma mark -
 #pragma mark Initializations and Deallocations
 
@@ -34,27 +41,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [UIWindow window];
     UIWindow *window = self.window;
-    
-    NVMapViewController *mapController = nil;
-    mapController = [NVMapViewController viewControllerWithDefaultNib];
-    
-    NVLocationViewController *locationController = nil;
-    locationController = [NVLocationViewController viewControllerWithDefaultNib];
-    
-    NVCompassViewController *compassController = nil;
-    compassController = [NVCompassViewController viewControllerWithDefaultNib];
-    
-    UITabBarController *tabBar = [UITabBarController object];
-    NSArray *controllers = [NSArray arrayWithObjects:mapController,
-                                                    locationController,
-                                                    compassController,
-                                                    nil];
-    
-
-    tabBar.viewControllers = controllers;
 
     window.backgroundColor = [UIColor whiteColor];
-    window.rootViewController = tabBar;
+    window.rootViewController = [self setupTabBarController];
     [window makeKeyAndVisible];
     
     return YES;
@@ -78,6 +67,30 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 
+}
+
+#pragma mark -
+#pragma mark Private
+
+- (UITabBarController *)setupTabBarController {
+    NVMapViewController *mapController = nil;
+    mapController = [NVMapViewController viewControllerWithDefaultNib];
+    
+    NVLocationViewController *locationController = nil;
+    locationController = [NVLocationViewController viewControllerWithDefaultNib];
+    
+    NVCompassViewController *compassController = nil;
+    compassController = [NVCompassViewController viewControllerWithDefaultNib];
+    
+    UITabBarController *tabBar = [UITabBarController object];
+    NSArray *controllers = [NSArray arrayWithObjects:mapController,
+                            locationController,
+                            compassController,
+                            nil];
+    
+    tabBar.viewControllers = controllers;
+    
+    return tabBar;
 }
 
 @end
