@@ -15,7 +15,10 @@
 #import "MKMapView+NVExtensions.h"
 
 static NSString * const kTitle = @"Map";
-
+static const CLLocationDegrees kNorth   = 0.0;
+static const CLLocationDegrees kSouth   = 180.0;
+static const CLLocationDegrees kWest    = -90.0;
+static const CLLocationDegrees kEast    = 90.0;
 
 #define kDistanceArray [NSArray arrayWithObjects:@100, @500, @1000, @2000, nil]
 
@@ -88,15 +91,14 @@ IDPViewControllerViewOfClassGetterSynthesize(NVMapView, mapView)
     [mapView setCenterCoordinate:userCoordinate animated:YES];
     [mapView removeAnnotations:mapView.annotations];
     
-    NSArray *array = kDistanceArray;
+    NSArray *distances = kDistanceArray;
     
-    for (NSNumber *distance  in array) {
-        CLLocationCoordinate2D coordinate = [self coordinateForDistance:distance.intValue
-                                                         fromCoordinate:userCoordinate];
-        
+    for (NSNumber *distance  in distances) {
         NVMapAnnotation *placemark = nil;
-        placemark = [[[NVMapAnnotation alloc] initWithCoordinate:coordinate] autorelease];
-        placemark.title = [NSString stringWithFormat:@"Distance %@ m", distance];
+        placemark = [[[NVMapAnnotation alloc] initWithDistance:distance.doubleValue
+                                                       degrees:kWest
+                                                fromCoordinate:userCoordinate]autorelease];
+
         [mapView addAnnotation:placemark];
     }
 }

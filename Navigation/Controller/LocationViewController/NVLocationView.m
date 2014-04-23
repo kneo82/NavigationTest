@@ -23,8 +23,10 @@ static NSString * const kAddressKey = @"FormattedAddressLines";
 #pragma mark Initializations and Deallocations
 
 - (void)dealloc {
-    self.coordinate = nil;
+    self.latitude = nil;
+    self.longitude = nil;
     self.address = nil;
+    self.error = nil;
     self.placemark = nil;
     
     [super dealloc];
@@ -38,6 +40,14 @@ static NSString * const kAddressKey = @"FormattedAddressLines";
     [self fillPlacemark];
 }
 
+- (void)setCoordinate:(CLLocationCoordinate2D)coordinate {
+    IDPNonatomicAssignPropertySynthesize(_coordinate, coordinate);
+    
+    self.latitude.text = [NSString stringWithFormat:@"%f", coordinate.latitude];
+    self.longitude.text = [NSString stringWithFormat:@"%f", coordinate.longitude];
+    self.error.text = nil;
+}
+
 #pragma mark -
 #pragma mark Private
 
@@ -48,6 +58,7 @@ static NSString * const kAddressKey = @"FormattedAddressLines";
         [formattedAddress appendFormat:@"%@\n", item];
     }
     self.address.text = formattedAddress;
+    self.error.text = nil;
 }
 
 @end

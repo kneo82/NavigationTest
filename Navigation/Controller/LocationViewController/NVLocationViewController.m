@@ -70,9 +70,7 @@ IDPViewControllerViewOfClassGetterSynthesize(NVLocationView, locationView)
     NVLocationView *locationView = self.locationView;
     CLGeocoder *coder = [CLGeocoder object];
     
-    locationView.coordinate.text = [NSString stringWithFormat:@"%f - %f",
-                                                                coordinate.latitude,
-                                                                coordinate.longitude];
+    locationView.coordinate = coordinate;
     
     [coder reverseGeocodeLocation:location
                 completionHandler:^(NSArray *placemarks, NSError *error)
@@ -80,7 +78,7 @@ IDPViewControllerViewOfClassGetterSynthesize(NVLocationView, locationView)
         if (!error) {
             locationView.placemark = [placemarks firstObject];
         } else {
-            locationView.address.text = [NSString stringWithFormat:@"ERROR : %@", error];
+            locationView.error.text = [NSString stringWithFormat:@"ERROR : %@", error];
         }
     }];
 }
@@ -89,7 +87,7 @@ IDPViewControllerViewOfClassGetterSynthesize(NVLocationView, locationView)
        didFailWithError:(NSError *)error
 {
     NSString *errorString = [NSString stringWithFormat:@"Could not find location: %@", error];
-    self.locationView.coordinate.text = errorString;
+    self.locationView.error.text = errorString;
 }
 
 @end
