@@ -10,4 +10,8 @@
 
 @interface NSString (NVExtensions)
 
+-(void)drawWithBasePoint:(CGPoint)basePoint
+                andAngle:(CGFloat)angle
+                 andFont:(UIFont*)font;
+
 @end
