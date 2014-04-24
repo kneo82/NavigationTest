@@ -83,6 +83,7 @@
 		551FE2681901258C0018F5F5 /* UIView+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE2321901258C0018F5F5 /* UIView+IDPExtensions.m */; };
 		551FE2691901258C0018F5F5 /* UIViewController+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE2341901258C0018F5F5 /* UIViewController+IDPExtensions.m */; };
 		551FE26A1901258C0018F5F5 /* UIViewController+IDPInitialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE2361901258C0018F5F5 /* UIViewController+IDPInitialization.m */; };
+		554298701908F58A00394917 /* NVCompass.m in Sources */ = {isa = PBXBuildFile; fileRef = 5542986F1908F58A00394917 /* NVCompass.m */; };
 		5576AC8119027EAD001EE5FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5576AC8019027EAD001EE5FC /* CoreLocation.framework */; };
 		5576AC83190283DE001EE5FC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5576AC82190283DE001EE5FC /* MapKit.framework */; };
 		5576AC861902E8F3001EE5FC /* NVMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576AC851902E8F3001EE5FC /* NVMapAnnotation.m */; };
@@ -252,6 +253,8 @@
 		551FE2341901258C0018F5F5 /* UIViewController+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IDPExtensions.m"; sourceTree = "<group>"; };
 		551FE2351901258C0018F5F5 /* UIViewController+IDPInitialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IDPInitialization.h"; sourceTree = "<group>"; };
 		551FE2361901258C0018F5F5 /* UIViewController+IDPInitialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IDPInitialization.m"; sourceTree = "<group>"; };
+		5542986E1908F58A00394917 /* NVCompass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVCompass.h; sourceTree = "<group>"; };
+		5542986F1908F58A00394917 /* NVCompass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVCompass.m; sourceTree = "<group>"; };
 		5576AC8019027EAD001EE5FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5576AC82190283DE001EE5FC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5576AC841902E8F3001EE5FC /* NVMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVMapAnnotation.h; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 				551FE18F190124160018F5F5 /* NVCompassViewController.xib */,
 				551FE1921901242A0018F5F5 /* NVCompassView.h */,
 				551FE1931901242A0018F5F5 /* NVCompassView.m */,
+				5542986E1908F58A00394917 /* NVCompass.h */,
+				5542986F1908F58A00394917 /* NVCompass.m */,
 			);
 			path = CompassViewController;
 			sourceTree = "<group>";
@@ -931,6 +936,7 @@
 				551FE2481901258C0018F5F5 /* IDPKVOMutableArray.m in Sources */,
 				551FE2471901258C0018F5F5 /* IDPKVOContext.m in Sources */,
 				551FE2561901258C0018F5F5 /* IDPRetainingReference.m in Sources */,
+				554298701908F58A00394917 /* NVCompass.m in Sources */,
 				5576AC8C1902F399001EE5FC /* MKMapView+NVExtensions.m in Sources */,
 				551FE24F1901258C0018F5F5 /* IDPOCContext.m in Sources */,
 				551FE2511901258C0018F5F5 /* IDPOCStack.m in Sources */,
