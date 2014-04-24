@@ -16,21 +16,17 @@
     CGSize  textSize    = [self sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font.pointSize]}];
     
     CGContextRef    context =   UIGraphicsGetCurrentContext();
-    CGAffineTransform   t   =   CGAffineTransformMakeTranslation(basePoint.x, basePoint.y);
-    CGAffineTransform   r   =   CGAffineTransformMakeRotation(angle);
+    CGAffineTransform   translation   =   CGAffineTransformMakeTranslation(basePoint.x, basePoint.y);
+    CGAffineTransform   rotation   =   CGAffineTransformMakeRotation(angle);
     
-    
-    CGContextConcatCTM(context, t);
-    CGContextConcatCTM(context, r);
-    
-//    [self   drawAtPoint:CGPointMake(-1 * textSize.width / 2, -1 * textSize.height / 2)
-//               withFont:font];
+    CGContextConcatCTM(context, translation);
+    CGContextConcatCTM(context, rotation);
     
     NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
     
     [self drawAtPoint:CGPointMake(-1 * textSize.width / 2, -1 * textSize.height / 2) withAttributes:attrsDictionary];
-    CGContextConcatCTM(context, CGAffineTransformInvert(r));
-    CGContextConcatCTM(context, CGAffineTransformInvert(t));
+    CGContextConcatCTM(context, CGAffineTransformInvert(rotation));
+    CGContextConcatCTM(context, CGAffineTransformInvert(translation));
 }
 
 @end

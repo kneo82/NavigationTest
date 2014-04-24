@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NVCompassView : UIView
-@property (nonatomic, assign, readwrite)   CGFloat angle;
 
 @end

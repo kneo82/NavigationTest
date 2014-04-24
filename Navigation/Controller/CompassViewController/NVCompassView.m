@@ -9,6 +9,7 @@
 #import "NVCompassView.h"
 
 #import "NSString+NVExtensions.h"
+#import "CGGeometry+IDPExtensions.h"
 
 static const double margin = 50.0;
 static const double thicksMainLine = 6.0;
@@ -43,6 +44,42 @@ static const double shadowSize = 10.0;
     return self;
 }
 
+- (void)awakeFromNib {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        sleep(3);
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:810]];
+        });
+        sleep(10);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:810]];
+        });
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:-95]];
+        });
+    });
+}
+
+- (void) rotateViewAnimated:(UIView*)view
+               withDuration:(CFTimeInterval)duration
+                    byAngle:(CGFloat)angle
+{
+    [CATransaction begin];
+    CABasicAnimation *rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.byValue = [NSNumber numberWithFloat:angle];
+    rotationAnimation.duration = duration;
+    rotationAnimation.removedOnCompletion = YES;
+    
+    [CATransaction setCompletionBlock:^{
+        view.transform = CGAffineTransformRotate(view.transform, angle);
+    }];
+    
+    [view.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    [CATransaction commit];
+}
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -61,19 +98,7 @@ static const double shadowSize = 10.0;
     double width = rect.size.width - margin;
     CGContextSetLineWidth(context, thicksMainLine);
     
-   
-    
     CGPoint centerCoordinat = {rect.size.width / 2, rect.size.height / 2};
-    
-    
-    CGAffineTransform   t   =   CGAffineTransformMakeTranslation(+centerCoordinat.x , +centerCoordinat.y);
-    CGAffineTransform   r   =   CGAffineTransformMakeRotation([self radiansFromDegrees:self.angle]);//////////
-    CGAffineTransform   t2   =   CGAffineTransformMakeTranslation(-centerCoordinat.x , -centerCoordinat.y);
-    CGContextConcatCTM(context, t);
-    CGContextConcatCTM(context, r);
-    CGContextConcatCTM(context, t2);
-    
-    
     double radius = width / 2;
     
     CGPoint startPoint = {centerCoordinat.x - width / 2, centerCoordinat.y - width / 2};
@@ -85,14 +110,11 @@ static const double shadowSize = 10.0;
                     withShadowOfset:shadowOffset
                       andShadowSize:shadowSize];
     
-    CGRect ellipseRect = CGRectMake (centerCoordinat.x, centerCoordinat.y, 3, 3);
+    CGRect ellipseRect = CGRectMake (centerCoordinat.x-1.5, centerCoordinat.y-1.5, 3, 3);
     CGContextStrokeEllipseInRect(context, ellipseRect);
   
     CGContextSetLineWidth(context, thicksMainLine / 2.0);
     [self drawdivisionCompassInContext:context centerCoordinat:centerCoordinat radius:radius];
-    
-//    CGContextConcatCTM(context, CGAffineTransformInvert(r));
-//    CGContextConcatCTM(context, CGAffineTransformInvert(t));
 }
 
 #pragma mark -
