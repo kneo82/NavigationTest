@@ -72,12 +72,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Navigation/Controller/CompassViewController/NVCompassView.m"
-            timestampString = "420052970.976323"
+            timestampString = "420099653.066362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-drawRect:"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "-rotateViewAnimated:withDuration:byAngle:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -103,14 +103,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Navigation/Controller/CompassViewController/NVCompassView.m"
-            timestampString = "420047556.77628"
+            filePath = "Navigation/Controller/CompassViewController/NVCompassViewController.m"
+            timestampString = "420098835.174958"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-awakeFromNib"
-            landmarkType = "5">
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "@implementation NVCompassViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -120,12 +120,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Navigation/Controller/CompassViewController/NVCompassView.m"
-            timestampString = "420052970.976323"
+            timestampString = "420109192.070322"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-awakeFromNib"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-rotateByAngle:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

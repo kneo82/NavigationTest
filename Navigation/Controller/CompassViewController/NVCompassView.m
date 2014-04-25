@@ -8,6 +8,8 @@
 
 #import "NVCompassView.h"
 
+#import "IDPPropertyMacros.h"
+
 #import "NSString+NVExtensions.h"
 #import "CGGeometry+IDPExtensions.h"
 
@@ -40,26 +42,38 @@ static const double shadowSize = 10.0;
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.angle = 0;
     }
     return self;
 }
 
-- (void)awakeFromNib {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        sleep(3);
+#pragma mark -
+#pragma mark Accessors
 
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:810]];
-        });
-        sleep(10);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:810]];
-        });
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:-95]];
-        });
+- (void)setAngle:(CGFloat)angle {
+    IDPNonatomicAssignPropertySynthesize(_angle, angle);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:angle]];
     });
+}
+
+- (void)awakeFromNib {
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        sleep(3);
+//
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:810]];
+//        });
+//        sleep(5);
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:810]];
+//        });
+//
+//        sleep(5);
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:5]];
+//        });
+//    });
 }
 
 - (void) rotateViewAnimated:(UIView*)view
@@ -81,12 +95,17 @@ static const double shadowSize = 10.0;
     [CATransaction commit];
 }
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    
-    // Drawing code
+- (void)rotateByAngle:(CGFloat)angle {
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         self.transform = CGAffineTransformMakeRotation(angle);
+                     }
+                     completion:^(BOOL finished){
+
+                     }];
+}
+
+- (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     CGContextClearRect(context, rect);

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NVCompassViewController : UIViewController
+@interface NVCompassViewController : UIViewController <CLLocationManagerDelegate>
 
 @end

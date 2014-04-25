@@ -12,7 +12,8 @@
 
 -(void)  drawWithBasePoint:(CGPoint)basePoint
                   andAngle:(CGFloat)angle
-                   andFont:(UIFont *)font{
+                   andFont:(UIFont *)font
+{
     CGSize  textSize    = [self sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font.pointSize]}];
     
     CGContextRef    context =   UIGraphicsGetCurrentContext();
