@@ -11,4 +11,6 @@
 @interface NVCompassView : UIView
 @property (nonatomic, assign)   CGFloat angle;
 
+- (void)rotateViewWithDuration:(CFTimeInterval)duration byAngleInDegrees:(CGFloat)angleInDegrees;
+
 @end

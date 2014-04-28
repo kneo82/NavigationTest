@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NVRotationGestureRecognizer.h"
 
-@interface NVCompassViewController : UIViewController <CLLocationManagerDelegate>
+@interface NVCompassViewController : UIViewController <CLLocationManagerDelegate,
+                                                        NVRotationGestureRecognizerDelegate>
 
 @end

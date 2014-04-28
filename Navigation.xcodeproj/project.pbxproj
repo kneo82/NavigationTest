@@ -87,6 +87,7 @@
 		5576AC83190283DE001EE5FC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5576AC82190283DE001EE5FC /* MapKit.framework */; };
 		5576AC861902E8F3001EE5FC /* NVMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576AC851902E8F3001EE5FC /* NVMapAnnotation.m */; };
 		5576AC8C1902F399001EE5FC /* MKMapView+NVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576AC8B1902F399001EE5FC /* MKMapView+NVExtensions.m */; };
+		5590B950190E29FA0013CEE3 /* NVRotationGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5590B94F190E29FA0013CEE3 /* NVRotationGestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +259,8 @@
 		5576AC851902E8F3001EE5FC /* NVMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVMapAnnotation.m; sourceTree = "<group>"; };
 		5576AC8A1902F399001EE5FC /* MKMapView+NVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+NVExtensions.h"; sourceTree = "<group>"; };
 		5576AC8B1902F399001EE5FC /* MKMapView+NVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+NVExtensions.m"; sourceTree = "<group>"; };
+		5590B94E190E29FA0013CEE3 /* NVRotationGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVRotationGestureRecognizer.h; sourceTree = "<group>"; };
+		5590B94F190E29FA0013CEE3 /* NVRotationGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVRotationGestureRecognizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +395,8 @@
 				551FE18F190124160018F5F5 /* NVCompassViewController.xib */,
 				551FE1921901242A0018F5F5 /* NVCompassView.h */,
 				551FE1931901242A0018F5F5 /* NVCompassView.m */,
+				5590B94E190E29FA0013CEE3 /* NVRotationGestureRecognizer.h */,
+				5590B94F190E29FA0013CEE3 /* NVRotationGestureRecognizer.m */,
 			);
 			path = CompassViewController;
 			sourceTree = "<group>";
@@ -950,6 +955,7 @@
 				551FE24C1901258C0018F5F5 /* IDPMutableArray.m in Sources */,
 				551FE2421901258C0018F5F5 /* NSObject+IDPExtensions.m in Sources */,
 				551FE2661901258C0018F5F5 /* UIStoryboard+IDPExtensions.m in Sources */,
+				5590B950190E29FA0013CEE3 /* NVRotationGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

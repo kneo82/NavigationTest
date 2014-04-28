@@ -37,6 +37,9 @@ static const double shadowSize = 10.0;
 
 @implementation NVCompassView
 
+#pragma mark -
+#pragma mark Initializations and Deallocations
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -53,7 +56,7 @@ static const double shadowSize = 10.0;
 - (void)setAngle:(CGFloat)angle {
     IDPNonatomicAssignPropertySynthesize(_angle, angle);
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:angle]];
+        [self rotateByAngleInDegrees:angle];
     });
 }
 
@@ -66,9 +69,9 @@ static const double shadowSize = 10.0;
 //        });
 //        sleep(5);
 //        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:810]];
+//            [self rotateByAngle:[self radiansFromDegrees:10]];
 //        });
-//
+
 //        sleep(5);
 //        dispatch_async(dispatch_get_main_queue(), ^{
 //            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:5]];
@@ -76,32 +79,31 @@ static const double shadowSize = 10.0;
 //    });
 }
 
-- (void) rotateViewAnimated:(UIView*)view
-               withDuration:(CFTimeInterval)duration
-                    byAngle:(CGFloat)angle
-{
+- (void)rotateViewWithDuration:(CFTimeInterval)duration byAngleInDegrees:(CGFloat)angleInDegrees {
+    CGFloat angleInRadians = [self radiansFromDegrees:angleInDegrees];
     [CATransaction begin];
     CABasicAnimation *rotationAnimation;
     rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotationAnimation.byValue = [NSNumber numberWithFloat:angle];
+    rotationAnimation.byValue = [NSNumber numberWithFloat:angleInRadians];
     rotationAnimation.duration = duration;
     rotationAnimation.removedOnCompletion = YES;
     
     [CATransaction setCompletionBlock:^{
-        view.transform = CGAffineTransformRotate(view.transform, angle);
+        self.transform = CGAffineTransformRotate(self.transform, angleInRadians);
     }];
     
-    [view.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    [self.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
     [CATransaction commit];
 }
 
-- (void)rotateByAngle:(CGFloat)angle {
-    [UIView animateWithDuration:0.2
+- (void)rotateByAngleInDegrees:(CGFloat)angleInDegrees {
+    CGFloat angleInRadians = [self radiansFromDegrees:angleInDegrees];
+//    self.transform = CGAffineTransformMakeRotation(angleInRadians);
+    [UIView animateWithDuration:(2/(2*M_PI))*angleInRadians
                      animations:^{
-                         self.transform = CGAffineTransformMakeRotation(angle);
+                         self.transform = CGAffineTransformMakeRotation(angleInRadians);
                      }
                      completion:^(BOOL finished){
-
                      }];
 }
 
