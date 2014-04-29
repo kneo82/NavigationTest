@@ -18,20 +18,25 @@ static const double thicksMainLine = 6.0;
 static const double fontSize = 16.0;
 static const double angleSegments = 6.0;
 static const double angleBigSegments = 30.0;
-static const double shadowSize = 10.0;
+static const double shadowBlur = 10.0;
 
 @interface NVCompassView ()
 
 - (double)radiansFromDegrees:(double)degrees;
+- (void)rotateByAngleInDegrees:(CGFloat)angleInDegrees;
 
 - (void)drawShadowEllipseInContext:(CGContextRef)context
                              rect:(CGRect)rect
                   withShadowOfset:(CGSize)shadowOfset
-                    andShadowSize:(CGFloat)shadowSize;
+                    andShadowSize:(CGFloat)shadowBlure;
 
-- (void)drawdivisionCompassInContext:(CGContextRef)context
+- (void)drawDivisionCompassInContext:(CGContextRef)context
                      centerCoordinat:(CGPoint)centerCoordinat
                               radius:(CGFloat)radius;
+
+- (CGPoint)pointForAngle:(CGFloat)angle
+         centerCoordinat:(CGPoint)centerCoordinat
+                  radius:(CGFloat)radius;
 
 @end
 
@@ -44,7 +49,6 @@ static const double shadowSize = 10.0;
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
         self.angle = 0;
     }
     return self;
@@ -59,53 +63,8 @@ static const double shadowSize = 10.0;
         [self rotateByAngleInDegrees:angle];
     });
 }
-
-- (void)awakeFromNib {
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        sleep(3);
-//
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:810]];
-//        });
-//        sleep(5);
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self rotateByAngle:[self radiansFromDegrees:10]];
-//        });
-
-//        sleep(5);
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [self rotateViewAnimated:self withDuration:2 byAngle:[self radiansFromDegrees:5]];
-//        });
-//    });
-}
-
-- (void)rotateViewWithDuration:(CFTimeInterval)duration byAngleInDegrees:(CGFloat)angleInDegrees {
-    CGFloat angleInRadians = [self radiansFromDegrees:angleInDegrees];
-    [CATransaction begin];
-    CABasicAnimation *rotationAnimation;
-    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotationAnimation.byValue = [NSNumber numberWithFloat:angleInRadians];
-    rotationAnimation.duration = duration;
-    rotationAnimation.removedOnCompletion = YES;
-    
-    [CATransaction setCompletionBlock:^{
-        self.transform = CGAffineTransformRotate(self.transform, angleInRadians);
-    }];
-    
-    [self.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
-    [CATransaction commit];
-}
-
-- (void)rotateByAngleInDegrees:(CGFloat)angleInDegrees {
-    CGFloat angleInRadians = [self radiansFromDegrees:angleInDegrees];
-//    self.transform = CGAffineTransformMakeRotation(angleInRadians);
-    [UIView animateWithDuration:(2/(2*M_PI))*angleInRadians
-                     animations:^{
-                         self.transform = CGAffineTransformMakeRotation(angleInRadians);
-                     }
-                     completion:^(BOOL finished){
-                     }];
-}
+#pragma mark -
+#pragma mark View Lifecycle
 
 - (void)drawRect:(CGRect)rect {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -125,27 +84,65 @@ static const double shadowSize = 10.0;
     CGPoint startPoint = {centerCoordinat.x - width / 2, centerCoordinat.y - width / 2};
     CGRect circleRect = CGRectMake(startPoint.x, startPoint.y, width, width);
     
-    CGSize shadowOffset = CGSizeMake (15,  10);
+    CGSize shadowOffset = CGSizeMake (10,  10);
     [self drawShadowEllipseInContext:context
-                               rect:circleRect
-                    withShadowOfset:shadowOffset
-                      andShadowSize:shadowSize];
+                                rect:circleRect
+                     withShadowOfset:shadowOffset
+                       andShadowSize:shadowBlur];
     
     CGRect ellipseRect = CGRectMake (centerCoordinat.x-1.5, centerCoordinat.y-1.5, 3, 3);
     CGContextStrokeEllipseInRect(context, ellipseRect);
-  
+    
     CGContextSetLineWidth(context, thicksMainLine / 2.0);
-    [self drawdivisionCompassInContext:context centerCoordinat:centerCoordinat radius:radius];
+    [self drawDivisionCompassInContext:context centerCoordinat:centerCoordinat radius:radius];
+}
+
+#pragma mark -
+#pragma mark Public
+
+- (void)rotateViewWithDuration:(CFTimeInterval)duration byAngleInDegrees:(CGFloat)angleInDegrees {
+    CGFloat angleInRadians = [self radiansFromDegrees:angleInDegrees];
+    [CATransaction begin];
+    CABasicAnimation *rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.byValue = [NSNumber numberWithFloat:angleInRadians];
+    rotationAnimation.duration = duration;
+    rotationAnimation.removedOnCompletion = YES;
+    
+    [CATransaction setCompletionBlock:^{
+        self.transform = CGAffineTransformRotate(self.transform, angleInRadians);
+    }];
+    
+    [self.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
+    [CATransaction commit];
 }
 
 #pragma mark -
 #pragma mark Private
 
+- (void)rotateByAngleInDegrees:(CGFloat)angleInDegrees {
+    CGFloat angleInRadians = [self radiansFromDegrees:angleInDegrees];
+    [UIView animateWithDuration:(2/(2*M_PI))*angleInRadians
+                     animations:^{
+                         self.transform = CGAffineTransformMakeRotation(angleInRadians);
+                     }];
+}
+
 - (double)radiansFromDegrees:(double)degrees {
     return degrees * (M_PI/180.0);
 }
 
-- (void)drawdivisionCompassInContext:(CGContextRef)context
+- (CGPoint)pointForAngle:(CGFloat)angle
+         centerCoordinat:(CGPoint)centerCoordinat
+                  radius:(CGFloat)radius
+{
+    double x = centerCoordinat.x + radius * cos(angle);
+    double y = centerCoordinat.y + radius * sin(angle);
+    
+    return CGPointMake(x, y);
+}
+
+- (void)drawDivisionCompassInContext:(CGContextRef)context
                       centerCoordinat:(CGPoint)centerCoordinat
                                radius:(CGFloat)radius
 {
@@ -155,13 +152,10 @@ static const double shadowSize = 10.0;
         double lenght = i%5 ? 15 : 30;
         double radians = [self radiansFromDegrees:(6.0 * i)-90];
         
-        double x1 = centerCoordinat.x + radius * cos(radians);
-        double y1 = centerCoordinat.y + radius * sin(radians);
-        double x2 = centerCoordinat.x + (radius - lenght) * cos(radians);
-        double y2 = centerCoordinat.y + (radius - lenght) * sin(radians);
+        CGPoint point1 = [self pointForAngle:radians centerCoordinat:centerCoordinat radius:radius];
         
-        CGPoint point1 = {x1, y1};
-        CGPoint point2 = {x2, y2};
+        CGFloat radius2 = radius - lenght;
+        CGPoint point2 = [self pointForAngle:radians centerCoordinat:centerCoordinat radius:radius2];
         
         CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
         if (i == 0) CGContextSetRGBStrokeColor(context, 1, 0, 0, 1);
@@ -171,9 +165,10 @@ static const double shadowSize = 10.0;
         
         if (!(i%15)) {
             double radiusFontPosition = radius - lenght - fontSize;
-            double x3 = centerCoordinat.x + radiusFontPosition * cos(radians);
-            double y3 = centerCoordinat.y + radiusFontPosition * sin(radians);
-            CGPoint coordinateDrawText = {x3, y3};
+
+            CGPoint coordinateDrawText = [self pointForAngle:radians
+                                             centerCoordinat:centerCoordinat
+                                                      radius:radiusFontPosition];
 
             NSString *text = nil;
             switch (i) {
@@ -192,7 +187,7 @@ static const double shadowSize = 10.0;
             }
             
             [text drawWithBasePoint:coordinateDrawText
-                           andAngle:(radians+M_PI/2)
+                           andAngle:(radians + M_PI/2)
                             andFont:[UIFont boldSystemFontOfSize:fontSize]];
         }
     }
@@ -202,10 +197,11 @@ static const double shadowSize = 10.0;
 - (void)drawShadowEllipseInContext:(CGContextRef)context
                              rect:(CGRect)rect
                   withShadowOfset:(CGSize)shadowOfset
-                    andShadowSize:(CGFloat)shadowSize
+                    andShadowSize:(CGFloat)shadowBlur
 {
     CGContextSaveGState(context);
-    CGContextSetShadow (context, shadowOfset, shadowSize);
+    CGColorRef color = [[UIColor blackColor] CGColor];
+    CGContextSetShadowWithColor(context, shadowOfset, shadowBlur, color);
     CGContextFillEllipseInRect(context, rect);
     CGContextRestoreGState(context);
     CGContextStrokeEllipseInRect(context, rect);

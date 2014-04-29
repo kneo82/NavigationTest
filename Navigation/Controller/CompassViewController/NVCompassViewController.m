@@ -16,6 +16,8 @@
 #import "UIViewController+IDPExtensions.h"
 
 static NSString * const kTitle = @"Compass";
+static const CGFloat timeFullRotation = 2;
+static const CGFloat maxTimeRotate = 5;
 
 @interface NVCompassViewController ()
 @property (nonatomic, retain)   CLLocationManager   *locationManager;
@@ -37,10 +39,11 @@ static NSString * const kTitle = @"Compass";
 
 - (void)dealloc {
     self.locationManager = nil;
-    self.gestureRecognizer =nil;
+    self.gestureRecognizer = nil;
     
     [super dealloc];
 }
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -77,13 +80,24 @@ IDPViewControllerViewOfClassGetterSynthesize(NVCompassView, compassView)
     self.compassView.angle = angle ;
 }
 
-- (void)finalAngle:(CGFloat)angle {
-    [self.compassView rotateViewWithDuration:1 byAngleInDegrees:-angle];
+- (void)endRotation:(CGFloat)angle {
+    CGFloat duration = timeFullRotation * fabs(angle) / 360;
+    duration = (maxTimeRotate > duration) ? duration : maxTimeRotate;
+    [self.compassView rotateViewWithDuration:duration byAngleInDegrees:-angle];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        sleep(duration);
+        [self.locationManager startUpdatingHeading];
+    });
 }
 
 - (void)gestureRecognizerStateFailed:(CGFloat)angle {
-    [self finalAngle:angle];
+    [self endRotation:angle];
 }
+
+- (void)startRotation {
+    [self.locationManager stopUpdatingHeading];
+}
+
 #pragma mark -
 #pragma mark Private
 
@@ -102,13 +116,14 @@ IDPViewControllerViewOfClassGetterSynthesize(NVCompassView, compassView)
     CGPoint pointOfCentre = CGRectGetCenter(rect);
     CGFloat outRadius = rect.size.width / 2;
     
-    self.gestureRecognizer = [[NVRotationGestureRecognizer alloc] initWithPointOfCentre:pointOfCentre
-                                                                            innerRadius:outRadius/3
-                                                                            outerRadius:outRadius
-                                                                                 target:self];
-    [self.gestureRecognizer autorelease];
-                              
-    [self.compassView addGestureRecognizer: self.gestureRecognizer];
+    self.gestureRecognizer = [[[NVRotationGestureRecognizer alloc]
+                               initWithPointOfCentre:pointOfCentre
+                                         innerRadius:outRadius/3
+                                         outerRadius:outRadius
+                                             target:self]
+                              autorelease];
+    
+    [self.compassView addGestureRecognizer:self.gestureRecognizer];
 }
 
 @end

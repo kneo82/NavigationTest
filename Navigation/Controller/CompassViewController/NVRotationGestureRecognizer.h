@@ -14,8 +14,9 @@
 @optional
 
 - (void)rotation:(CGFloat)angle;
-- (void)finalAngle:(CGFloat)angle;
+- (void)endRotation:(CGFloat)angle;
 - (void)gestureRecognizerStateFailed:(CGFloat)angle;
+- (void)startRotation;
 
 @end
 

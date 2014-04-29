@@ -7,6 +7,7 @@
 //
 
 #import "NSString+NVExtensions.h"
+#import "CGGeometry+IDPExtensions.h"
 
 @implementation NSString (NVExtensions)
 
@@ -17,8 +18,9 @@
     CGSize  textSize    = [self sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font.pointSize]}];
     
     CGContextRef    context =   UIGraphicsGetCurrentContext();
+    CGContextSaveGState(context);
     CGAffineTransform   translation   =   CGAffineTransformMakeTranslation(basePoint.x, basePoint.y);
-    CGAffineTransform   rotation   =   CGAffineTransformMakeRotation(angle);
+    CGAffineTransform   rotation   =  CGAffineTransformMakeRotation(angle);
     
     CGContextConcatCTM(context, translation);
     CGContextConcatCTM(context, rotation);
@@ -26,8 +28,8 @@
     NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObjectsAndKeys:font, NSFontAttributeName, nil];
     
     [self drawAtPoint:CGPointMake(-1 * textSize.width / 2, -1 * textSize.height / 2) withAttributes:attrsDictionary];
-    CGContextConcatCTM(context, CGAffineTransformInvert(rotation));
-    CGContextConcatCTM(context, CGAffineTransformInvert(translation));
+
+    CGContextRestoreGState(context);
 }
 
 @end
