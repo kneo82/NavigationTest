@@ -1,5 +1,5 @@
 //
-//  NVCompassView.h
+//  NVCompass.h
 //  Compass
 //
 //  Created by Vitaliy Voronok on 5/2/14.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class NVCompassControl;
-
-@interface NVCompassView : UIView
-
-@property (nonatomic, retain)	IBOutlet NVCompassControl	*compass;
+@interface NVCompassImage : UIView
 
 @end

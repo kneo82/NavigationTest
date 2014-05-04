@@ -72,13 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Navigation/Controller/CompassViewController/NVCompassView.m"
-            timestampString = "420456411.758484"
+            timestampString = "420912829.795825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-rotateViewWithDuration:byAngleInDegrees:"
-            landmarkType = "5">
+            startingLineNumber = "99"
+            endingLineNumber = "99">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -104,11 +102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Navigation/Controller/CompassViewController/NVCompassViewController.m"
-            timestampString = "420451521.21493"
+            timestampString = "420912829.795825"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "@implementation NVCompassViewController"
             landmarkType = "3">
          </BreakpointContent>

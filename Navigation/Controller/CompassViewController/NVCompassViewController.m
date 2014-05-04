@@ -1,8 +1,8 @@
 //
 //  NVCompassViewController.m
-//  Navigation
+//  Compass
 //
-//  Created by Vitaliy Voronok on 4/18/14.
+//  Created by Vitaliy Voronok on 5/2/14.
 //  Copyright (c) 2014 Vitaliy Voronok. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 
 #import "NVCompassViewController.h"
 #import "NVCompassView.h"
+#import "NVCompassControl.h"
 
 #import "CGGeometry+IDPExtensions.h"
 #import "NSObject+IDPExtensions.h"
@@ -50,8 +51,12 @@ static const CGFloat maxTimeRotate = 5;
     if (self) {
         self.title = kTitle;
     }
+    
     return self;
 }
+
+#pragma mark -
+#pragma mark View Lifecycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -70,20 +75,20 @@ IDPViewControllerViewOfClassGetterSynthesize(NVCompassView, compassView)
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
     CGFloat mHeading = newHeading.magneticHeading;
-    self.compassView.angle = mHeading;    
+    self.compassView.compass.angle = mHeading;
 }
 
 #pragma mark -
 #pragma mark NVRotationGestureRecognizerDelegate
 
 - (void) rotation: (CGFloat) angle {
-    self.compassView.angle = angle ;
+    self.compassView.compass.angle = angle ;
 }
 
 - (void)endRotation:(CGFloat)angle {
     CGFloat duration = timeFullRotation * fabs(angle) / 360;
     duration = (maxTimeRotate > duration) ? duration : maxTimeRotate;
-    [self.compassView rotateViewWithDuration:duration byAngleInDegrees:-angle];
+    [self.compassView.compass rotateViewWithDuration:duration byAngleInDegrees:-angle];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         sleep(duration);
         [self.locationManager startUpdatingHeading];
@@ -112,18 +117,19 @@ IDPViewControllerViewOfClassGetterSynthesize(NVCompassView, compassView)
 }
 
 - (void)setupGestureRecognizer {
-    CGRect rect = self.compassView.frame;
+    NVCompassView *compassView = self.compassView;
+    CGRect rect = compassView.frame;
     CGPoint pointOfCentre = CGRectGetCenter(rect);
     CGFloat outRadius = rect.size.width / 2;
     
     self.gestureRecognizer = [[[NVRotationGestureRecognizer alloc]
                                initWithPointOfCentre:pointOfCentre
-                                         innerRadius:outRadius/3
-                                         outerRadius:outRadius
-                                             target:self]
+                               innerRadius:outRadius/3
+                               outerRadius:outRadius
+                               target:self]
                               autorelease];
     
-    [self.compassView addGestureRecognizer:self.gestureRecognizer];
+    [compassView addGestureRecognizer:self.gestureRecognizer];
 }
 
 @end
