@@ -10,8 +10,11 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface NVLocationView : UIView
-@property (nonatomic, retain)   IBOutlet UILabel    *coordinate;
-@property (nonatomic, retain)   IBOutlet UILabel    *address;
-@property (nonatomic, retain)   CLPlacemark         *placemark;
+@property (nonatomic, retain)   IBOutlet UILabel        *latitude;
+@property (nonatomic, retain)   IBOutlet UILabel        *longitude;
+@property (nonatomic, retain)   IBOutlet UILabel        *address;
+@property (nonatomic, retain)   IBOutlet UILabel        *error;
+@property (nonatomic, retain)   CLPlacemark             *placemark;
+@property (nonatomic, assign)   CLLocationCoordinate2D  coordinate;
 
 @end

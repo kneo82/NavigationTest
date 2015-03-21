@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5507B0781907BE520023DF1F /* NSString+NVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5507B0771907BE520023DF1F /* NSString+NVExtensions.m */; };
 		551F7B6719064B32002E877A /* NVPinView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551F7B6619064B32002E877A /* NVPinView.m */; };
 		551FE152190121E30018F5F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551FE151190121E30018F5F5 /* Foundation.framework */; };
 		551FE154190121E30018F5F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551FE153190121E30018F5F5 /* CoreGraphics.framework */; };
@@ -82,10 +83,13 @@
 		551FE2681901258C0018F5F5 /* UIView+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE2321901258C0018F5F5 /* UIView+IDPExtensions.m */; };
 		551FE2691901258C0018F5F5 /* UIViewController+IDPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE2341901258C0018F5F5 /* UIViewController+IDPExtensions.m */; };
 		551FE26A1901258C0018F5F5 /* UIViewController+IDPInitialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 551FE2361901258C0018F5F5 /* UIViewController+IDPInitialization.m */; };
+		556699C4191697C4000EC23D /* NVCompassControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 556699C1191697C4000EC23D /* NVCompassControl.m */; };
+		556699C5191697C4000EC23D /* NVCompassImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 556699C3191697C4000EC23D /* NVCompassImage.m */; };
 		5576AC8119027EAD001EE5FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5576AC8019027EAD001EE5FC /* CoreLocation.framework */; };
 		5576AC83190283DE001EE5FC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5576AC82190283DE001EE5FC /* MapKit.framework */; };
 		5576AC861902E8F3001EE5FC /* NVMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576AC851902E8F3001EE5FC /* NVMapAnnotation.m */; };
 		5576AC8C1902F399001EE5FC /* MKMapView+NVExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5576AC8B1902F399001EE5FC /* MKMapView+NVExtensions.m */; };
+		5590B950190E29FA0013CEE3 /* NVRotationGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5590B94F190E29FA0013CEE3 /* NVRotationGestureRecognizer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +103,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5507B0761907BE520023DF1F /* NSString+NVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NVExtensions.h"; sourceTree = "<group>"; };
+		5507B0771907BE520023DF1F /* NSString+NVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NVExtensions.m"; sourceTree = "<group>"; };
 		551F7B6519064B32002E877A /* NVPinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVPinView.h; sourceTree = "<group>"; };
 		551F7B6619064B32002E877A /* NVPinView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVPinView.m; sourceTree = "<group>"; };
 		551FE14E190121E30018F5F5 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,12 +255,18 @@
 		551FE2341901258C0018F5F5 /* UIViewController+IDPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IDPExtensions.m"; sourceTree = "<group>"; };
 		551FE2351901258C0018F5F5 /* UIViewController+IDPInitialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+IDPInitialization.h"; sourceTree = "<group>"; };
 		551FE2361901258C0018F5F5 /* UIViewController+IDPInitialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+IDPInitialization.m"; sourceTree = "<group>"; };
+		556699C0191697C4000EC23D /* NVCompassControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVCompassControl.h; sourceTree = "<group>"; };
+		556699C1191697C4000EC23D /* NVCompassControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVCompassControl.m; sourceTree = "<group>"; };
+		556699C2191697C4000EC23D /* NVCompassImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVCompassImage.h; sourceTree = "<group>"; };
+		556699C3191697C4000EC23D /* NVCompassImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVCompassImage.m; sourceTree = "<group>"; };
 		5576AC8019027EAD001EE5FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5576AC82190283DE001EE5FC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5576AC841902E8F3001EE5FC /* NVMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVMapAnnotation.h; sourceTree = "<group>"; };
 		5576AC851902E8F3001EE5FC /* NVMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVMapAnnotation.m; sourceTree = "<group>"; };
 		5576AC8A1902F399001EE5FC /* MKMapView+NVExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+NVExtensions.h"; sourceTree = "<group>"; };
 		5576AC8B1902F399001EE5FC /* MKMapView+NVExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+NVExtensions.m"; sourceTree = "<group>"; };
+		5590B94E190E29FA0013CEE3 /* NVRotationGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVRotationGestureRecognizer.h; sourceTree = "<group>"; };
+		5590B94F190E29FA0013CEE3 /* NVRotationGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVRotationGestureRecognizer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,6 +377,8 @@
 				551FE186190123840018F5F5 /* UIWindow+TDExtensions.m */,
 				5576AC8A1902F399001EE5FC /* MKMapView+NVExtensions.h */,
 				5576AC8B1902F399001EE5FC /* MKMapView+NVExtensions.m */,
+				5507B0761907BE520023DF1F /* NSString+NVExtensions.h */,
+				5507B0771907BE520023DF1F /* NSString+NVExtensions.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -382,11 +396,14 @@
 		551FE182190122EB0018F5F5 /* CompassViewController */ = {
 			isa = PBXGroup;
 			children = (
+				556699BF191697AD000EC23D /* Compass */,
 				551FE18D190124160018F5F5 /* NVCompassViewController.h */,
 				551FE18E190124160018F5F5 /* NVCompassViewController.m */,
 				551FE18F190124160018F5F5 /* NVCompassViewController.xib */,
 				551FE1921901242A0018F5F5 /* NVCompassView.h */,
 				551FE1931901242A0018F5F5 /* NVCompassView.m */,
+				5590B94E190E29FA0013CEE3 /* NVRotationGestureRecognizer.h */,
+				5590B94F190E29FA0013CEE3 /* NVRotationGestureRecognizer.m */,
 			);
 			path = CompassViewController;
 			sourceTree = "<group>";
@@ -781,6 +798,17 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		556699BF191697AD000EC23D /* Compass */ = {
+			isa = PBXGroup;
+			children = (
+				556699C0191697C4000EC23D /* NVCompassControl.h */,
+				556699C1191697C4000EC23D /* NVCompassControl.m */,
+				556699C2191697C4000EC23D /* NVCompassImage.h */,
+				556699C3191697C4000EC23D /* NVCompassImage.m */,
+			);
+			path = Compass;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -911,6 +939,7 @@
 				5576AC861902E8F3001EE5FC /* NVMapAnnotation.m in Sources */,
 				551FE2431901258C0018F5F5 /* NSString+IDPExtensions.m in Sources */,
 				551FE25A1901258C0018F5F5 /* IDPURLConnection.m in Sources */,
+				5507B0781907BE520023DF1F /* NSString+NVExtensions.m in Sources */,
 				551FE2591901258C0018F5F5 /* IDPStackArray.m in Sources */,
 				551FE2681901258C0018F5F5 /* UIView+IDPExtensions.m in Sources */,
 				551FE25C1901258C0018F5F5 /* IDPWeakArray.m in Sources */,
@@ -923,9 +952,11 @@
 				551FE23D1901258C0018F5F5 /* NSArray+IDPExtensions.m in Sources */,
 				551FE24B1901258C0018F5F5 /* IDPSingletonModel.m in Sources */,
 				551FE2481901258C0018F5F5 /* IDPKVOMutableArray.m in Sources */,
+				556699C5191697C4000EC23D /* NVCompassImage.m in Sources */,
 				551FE2471901258C0018F5F5 /* IDPKVOContext.m in Sources */,
 				551FE2561901258C0018F5F5 /* IDPRetainingReference.m in Sources */,
 				5576AC8C1902F399001EE5FC /* MKMapView+NVExtensions.m in Sources */,
+				556699C4191697C4000EC23D /* NVCompassControl.m in Sources */,
 				551FE24F1901258C0018F5F5 /* IDPOCContext.m in Sources */,
 				551FE2511901258C0018F5F5 /* IDPOCStack.m in Sources */,
 				551FE2501901258C0018F5F5 /* IDPOCImplementation.m in Sources */,
@@ -944,6 +975,7 @@
 				551FE24C1901258C0018F5F5 /* IDPMutableArray.m in Sources */,
 				551FE2421901258C0018F5F5 /* NSObject+IDPExtensions.m in Sources */,
 				551FE2661901258C0018F5F5 /* UIStoryboard+IDPExtensions.m in Sources */,
+				5590B950190E29FA0013CEE3 /* NVRotationGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

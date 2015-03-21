@@ -1,31 +1,23 @@
 //
 //  NVCompassView.m
-//  Navigation
+//  Compass
 //
-//  Created by Vitaliy Voronok on 4/18/14.
+//  Created by Vitaliy Voronok on 5/2/14.
 //  Copyright (c) 2014 Vitaliy Voronok. All rights reserved.
 //
 
 #import "NVCompassView.h"
+#import "NVCompassControl.h"
 
 @implementation NVCompassView
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
+#pragma mark -
+#pragma mark Initializations and Deallocations
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)dealloc {
+	self.compass = nil;
+	
+	[super dealloc];
 }
-*/
 
 @end

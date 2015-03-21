@@ -14,13 +14,19 @@
 #import "UIViewController+IDPExtensions.h"
 #import "MKMapView+NVExtensions.h"
 
-static NSString * const kTitle = @"Map";
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
+static NSString * const kTitle = @"Map";
+static const CLLocationDegrees kNorth   = 0.0;
+static const CLLocationDegrees kSouth   = 180.0;
+static const CLLocationDegrees kWest    = -90.0;
+static const CLLocationDegrees kEast    = 90.0;
 
 #define kDistanceArray [NSArray arrayWithObjects:@100, @500, @1000, @2000, nil]
 
-@interface NVMapViewController ()
+@interface NVMapViewController () <CLLocationManagerDelegate>
 @property (nonatomic, readonly) NVMapView *mapView;
+@property (nonatomic, strong)   CLLocationManager *locationManager;
 
 @end
 
@@ -46,6 +52,18 @@ static NSString * const kTitle = @"Map";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+#ifdef __IPHONE_8_0
+    if(IS_OS_8_OR_LATER) {
+        // Use one or the other, not both. Depending on what you put in info.plist
+        [self.locationManager requestWhenInUseAuthorization];
+        //        [self.locationManager requestAlwaysAuthorization];
+    }
+#endif
+    [self.locationManager startUpdatingLocation];
+    
     
     MKMapView *map = self.mapView.map;
     CLLocationCoordinate2D coordinate = map.userLocation.location.coordinate;
@@ -88,15 +106,14 @@ IDPViewControllerViewOfClassGetterSynthesize(NVMapView, mapView)
     [mapView setCenterCoordinate:userCoordinate animated:YES];
     [mapView removeAnnotations:mapView.annotations];
     
-    NSArray *array = kDistanceArray;
+    NSArray *distances = kDistanceArray;
     
-    for (NSNumber *distance  in array) {
-        CLLocationCoordinate2D coordinate = [self coordinateForDistance:distance.intValue
-                                                         fromCoordinate:userCoordinate];
-        
+    for (NSNumber *distance  in distances) {
         NVMapAnnotation *placemark = nil;
-        placemark = [[[NVMapAnnotation alloc] initWithCoordinate:coordinate] autorelease];
-        placemark.title = [NSString stringWithFormat:@"Distance %@ m", distance];
+        placemark = [[[NVMapAnnotation alloc] initWithDistance:distance.doubleValue
+                                                       degrees:kWest
+                                                fromCoordinate:userCoordinate]autorelease];
+
         [mapView addAnnotation:placemark];
     }
 }
